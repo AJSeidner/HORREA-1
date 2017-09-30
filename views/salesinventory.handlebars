@@ -1,0 +1,93 @@
+      <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+     <img src="/assets/img/horrea2.jpg" height = "50px" width = "50px" class="pull-left" id="horrea2">
+     <div class="container" id="bar-mod">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+                
+          <!-- we need to update links in href -->
+               <li><a href="/seller/{{fname}}">Home</a></li>
+         <li><a href="/seller/{{fname}}/allsold">Items Sold</a></li>
+                <li><a href="/seller/{{fname}}/lowstock">Low Stock Items</a></li>
+                <li><a href="/seller/{{fname}}/inventory">Manage Inventory</a></li>
+                <li role="separator" class="divider"></li>
+        
+              </ul>
+          <ul class="nav navbar-nav navbar-right">
+            
+              <li><a href="/login">Log Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
+
+<div class="inventory-manager"> 
+<h1>items ready to sell </h1>
+ <table class="table">
+    <thead> 
+        <th> Name</th> 
+        <th> Quantity</th> 
+        <th>Price </th>
+        <th> Region  </th>
+        <th> Dep </th> 
+        <th> Quantity sold </th>
+
+    </thead> 
+    <tbody> 
+        {{#each products}} 
+        <tr> 
+            <td>{{this.product_name}}</td> 
+            <td>{{this.stock_qty}}</td> 
+            <td>{{this.unit_price}} $</td>
+            <td>{{this.regionCode}}</td>
+            <td>{{this.category}}</td>
+            <td><form action="/seller/{{fname}}/sellinventory?_method=put" method='post' class='login-form'>
+
+
+     <i id='password-input-icon' class='icon-lock'></i>
+     <label> please enter the quantity sold</label>
+     <input id="password" autocomplete="off" placeholder="quantity " class='dark' type="text" name="quantity">
+     <input type="hidden" name="product" value={{this.product_name}}>
+     <input type="hidden" name="stock_qty" value={{this.stock_qty}}>
+
+
+    <input type="submit" class='button large' value="Sell"></form></td>
+
+  
+   <!-- <form action="/seller/{{fname}}/sellinventory?_method=put" method='post' class='login-form'>
+
+     <i id='username-input-icon' class='icon-user'></i>
+     <label> please enter the product_name </label>
+     <input id="username" autocomplete="off" placeholder="product name" class='dark' type="text" name="name">
+
+     <i id='password-input-icon' class='icon-lock'></i>
+     <label> please enter the quantitiy for selling or something </label>
+     <input id="password" autocomplete="off" placeholder="quantity " class='dark' type="text" name="quantity">
+
+
+    <input type="submit" class='button large' value="ADD"> -->
+   
+   
+
+  
+
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+ 
+  
+
+</div>
